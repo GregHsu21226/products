@@ -1,7 +1,15 @@
-# 建立記帳程式
-
+# 讀取已儲存的檔案
 products = []
+with open('products.csv', 'r') as f:
+	for line in f:
+		if '商品,價格' in line:
+			continue # continue的意思是，跳過這一圈，可以藉此方式來避免儲存到'商品,價格'這一行
+		name, price = line.strip().split(',') # strip()去除換行符號		# split(',')代表依據逗號分割，分割後的資料會形成list   
 
+		products.append([name,price])         
+print(products)
+
+# 建立記帳程式：讓使用者輸入商品與價格
 while True:
 	name = input('請輸入商品名稱: ')
 	if name == 'q':
@@ -13,11 +21,13 @@ while True:
 	products.append(p)
 
 print('\n')
-# 印出每一項對應的價格
+
+# 印出所有購買紀錄
 for items in products:
 	print(items[0], '的價格是', items[1])
 
-# 將資料寫入檔案
+
+# 將所有購買紀錄寫入檔案
 with open('products.csv', 'w') as f: # 讀取與寫入檔案的起手式
 	f.write('商品,價格\n') # 加入header
 	for i in products:
