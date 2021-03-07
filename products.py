@@ -16,3 +16,13 @@ print('\n')
 # 印出每一項對應的價格
 for items in products:
 	print(items[0], '的價格是', items[1])
+
+# 將資料寫入檔案
+with open('products.csv', 'w') as f: # 讀取與寫入檔案的起手式
+	f.write('商品,價格\n') # 加入header
+	for i in products:
+		f.write(i[0] + ',' + i[1] + '\n') # 字串可以相加
+		                                  # write:寫入功能 
+										  # 在CSV檔中，逗號相當於跳到右邊的欄位
+										  # '\n'讓下一個item的資料換行
+
