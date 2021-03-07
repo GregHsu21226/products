@@ -1,3 +1,5 @@
+# 建立記帳程式
+
 products = []
 
 while True:
@@ -9,6 +11,8 @@ while True:
 	# 製作二維清單來儲存商品與價格：[[商品1, 價格1], [商品2, 價格2], [商品3, 價格3],...]
 	p = [name, price]
 	products.append(p)
-	
-print(products)
-	
+
+print('\n')
+# 印出每一項對應的價格
+for items in products:
+	print(items[0], '的價格是', items[1])
